@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+{% if request.user.is_authenticated %}
+
+<form class="search_bar" type="get" action=".">
+    Search by tag: <input  id="search_text" type="text" name="search"  placeholder="Search for tags (space separated)" >
+    {% comment %} Distance filter (optional): <input  id="search_dist" type="number" name="distance" min="1" max="50" placeholder="5"> {% endcomment %}
+    <button id="search_button" type="submit" >Search</button>
+</form>
+
+{% if results%}
+<h1 class="search_bar"> Search results for: {{tag_string}}</h1>
+
+<ul class="search_bar">
+{% for e in results %}
+   <li id="search_li"><a href="/event/{{e.id}}"> {{e.name}} </a></li>
+{% endfor %}
+</ul>
+
+{% else %}
+<p class="search_bar"> Sorry, no results found.</p>
+
+{% endif %}
+{% endif %}
+{% endblock %}

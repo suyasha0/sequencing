@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if request.user.is_authenticated %}
+<form  method="post">
+    {% csrf_token %}
+    Longitude: <input id="long" type="text" name="longitude" /> <br>
+    Latitude: <input id="lat" type="text" name="latitude" />
+
+    <script>
+    function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        function(position)
+        {
+          document.getElementById("long").value = position.coords.longitude;
+          document.getElementById("lat").value = position.coords.latitude;
+        }
+        )
+      }
+  }
+    </script>
+    <br>
+<button type="submit" onmouseenter="getLocation();">Get Nearby Events</button>
+</form>
+<h1> List of events in your area:</h1>
+{% if events %}
+<ul>
+{% for event in events %}
+<li> <a href="/event/{{event.id}}/"> {{event.name}} </a></li>
+{% endfor %}
+</ul>
+{% else %}
+<p> Sorry, there seem to be no events in your area. </p>
+{% endif %}
+{% endif %}
+{% endblock %}

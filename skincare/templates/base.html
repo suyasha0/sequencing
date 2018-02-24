@@ -1,0 +1,36 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" /> 
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse">
+   <div class="container-fluid">
+      <div class="navbar-header">
+         <a class="navbar-brand" href="/dashboard/">TFTI</a>
+      </div>
+      <ul class="nav navbar-nav">
+         <li><a href="/create_event/">Create Event</a></li>
+         <li><a href="/hosting/">Hosting</a></li>
+         <li><a href="/attending/">Attending</a></li>
+         <li><a href="/search/">Search</a></li>
+         <li><a href="/local_events/">Events Nearby</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+         <li><a href="/logout/">Logout</a></li>
+      </ul>
+   </div>
+</nav>
+
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

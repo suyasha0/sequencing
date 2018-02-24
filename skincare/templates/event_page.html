@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block content %}
+<h1> {{event.name}} </h1>
+<p> Host: {{event.host}} </p>
+<p> Location: {{event.location}} </p>
+
+<div id="googleMap" style="width:75%;height:400px;"></div>
+
+<script>
+function myMap() {
+	var c = new google.maps.LatLng({{event.latitude}},{{event.longitude}})
+	var mapProp= {
+    center:c,
+    zoom:17,
+	};
+	var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+	var marker = new google.maps.Marker({position:c,map: map});
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDykO6LBhBRmna1OsQbEboa-Jx9H-ervdQ&callback=myMap"></script>
+
+<p> Description: {{event.description}} </p>
+<p> Start: {{event.start}} </p>
+<p> End: {{event.end}} </p>
+<p> 21 and Older Only: {{event.alcohol}} </p>
+<p> Tags: </p>
+<ul>
+{% for tag in event.tags.all %}
+<li> {{tag.tag}} </li>
+{% endfor %}
+</ul>
+<p> Guests: </p>
+<ul>
+{% for guest in event.guests.all %}
+<li> {{guest.user.first_name}} {{guest.user.last_name}} </li>
+{% endfor %}
+</ul>
+{% if request.user.is_authenticated %}
+{% if request.user == event.host.user %}
+<a href="edit/"><button type="button" name="edit_event">Edit Event</button></a>
+{% elif request.user.profile.can_drink or not event.alcohol %}
+<form method="post">
+	{% csrf_token %}
+	{% if request.user.profile in event.guests.all %}
+	<button type="submit" name="leave_event" value="leave_event">Leave Event</button>
+	{% else %}
+	<button type="submit" name="join_event" value="join_event">Join Event</button>
+	{% endif %}
+</form>
+{% endif %}
+<a href="/dashboard/"> <button type="button">Return To Dashboard</button> </a>
+{% endif %}
+
+{% endblock %}
+
+{% comment %}
+{% block content %}
+<h1> {{event.name}} </h1>
+<p> Host: {{event.host}} </p>
+<p> Location: {{event.location}} </p>
+<p> Description: {{event.description}} </p>
+<p> Start: {{event.start}} </p>
+<p> End: {{event.end}} </p>
+<p> 21 and Older Only: {{event.alcohol}} </p>
+<p> Tags: </p>
+<ul>
+{% for tag in event.tags.all %}
+<li> {{tag.tag}} </li>
+{% endfor %}
+</ul>
+<p> Guests: </p>
+<ul>
+{% for guest in event.guests.all %}
+<li> {{guest.user.first_name}} {{guest.user.last_name}} </li>
+{% endfor %}
+</ul>
+{% if request.user.is_authenticated %}
+{% if request.user == event.host.user %}
+<button type="button">Edit Event</button>
+{% elif event.alcohol and request.user.profile.can_drink or not event.alcohol %}
+<form method="post">
+	{% csrf_token %}
+	{% if user.profile in event.guests.all %}
+	<button type="submit" disabled>Join Event</button>
+	{% else %}
+	<button type="submit">Join Event</button>
+	{% endif %}
+</form>
+{% endif %}
+<a href="/dashboard/"> <button type="button">Return To Dashboard</button> </a>
+{% endif %}
+
+{% endblock %}
+{% endcomment %}

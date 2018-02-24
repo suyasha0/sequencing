@@ -1,0 +1,23 @@
+#search_text {
+   width: 230px;
+}
+
+.search_bar {
+   text-align:center;
+}
+
+#search_li {
+   display: inline-block;
+}
+
+.home_page {
+   text-align:center;
+}
+
+.login {
+   text-align:center;
+}
+
+.register {
+   text-align:center;
+}

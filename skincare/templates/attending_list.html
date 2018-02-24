@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+{% if request.user.is_authenticated %}
+<h1> List of events {{request.user.first_name}} is signed up for:</h1>
+{% if events %}
+<ul>
+{% for event in events %}
+<li> <a href="/event/{{event.id}}/"> {{event.name}} </a></li>
+{% endfor %}
+</ul>
+{% else %}
+<p> Sorry, you don't seem to be signed up for any events </p>
+{% endif %}
+{% endif %}
+{% endblock %}
