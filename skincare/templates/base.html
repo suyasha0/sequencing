@@ -5,28 +5,35 @@
 
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" /> 
+<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}"> 
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}"> 
 
 </head>
 
 <body>
 
-<nav class="navbar navbar-inverse">
-   <div class="container-fluid">
-      <div class="navbar-header">
-         <a class="navbar-brand" href="/dashboard/">TFTI</a>
-      </div>
-      <ul class="nav navbar-nav">
-         <li><a href="/create_event/">Create Event</a></li>
-         <li><a href="/hosting/">Hosting</a></li>
-         <li><a href="/attending/">Attending</a></li>
-         <li><a href="/search/">Search</a></li>
-         <li><a href="/local_events/">Events Nearby</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-         <li><a href="/logout/">Logout</a></li>
-      </ul>
-   </div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand">Seabob Skin</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/daily">Daily</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/weather">Profile</a>
+      </li>
+     </ul>
+
+      <img height="40" src="{% static 'user.png' %}" />
+        <a class="nav-link whitetxt" class="nav-link" href="/logout/">Logout</a>
+  </div>
 </nav>
 
     <div id="content">
