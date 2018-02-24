@@ -50,3 +50,8 @@ def weather(request):
 	print data['list'][0]['main']['humidity']
 	return render(request, 'weather.html')
 
+def daily(request):
+	return render(request, 'daily.html')
+def myproducts(request):
+	return render(request, 'myproducts.html')
+

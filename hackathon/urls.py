@@ -26,6 +26,7 @@ urlpatterns = [
 	url(r'^register/$', views.register, name='register'),
 
 	url(r'^weather/$', views.weather, name='weather'),
-	url(r'^admin/', admin.site.urls)
-	url(r'^daily/$', views.daily, name='daily')
+	url(r'^admin/', admin.site.urls),
+	url(r'^daily/$', views.daily, name='daily'),
+	url(r'^myproducts/$', views.myproducts, name='myproducts')
 ]
