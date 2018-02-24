@@ -11,7 +11,7 @@ from django.utils import timezone
 class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	age = models.PositiveSmallIntegerField(blank=True, null=True)
-	skintype = models.CharField(max_length=30)
+	skintype = models.CharField(max_length=30, default="combination")
 	sensitive = models.BooleanField(default=False)
 
 	def __str__(self):
