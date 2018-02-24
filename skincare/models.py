@@ -17,11 +17,6 @@ class Profile(models.Model):
 	def __str__(self):
 		return "%s %s"%(self.user.first_name,self.user.last_name)
 
-
-	#hosting = models.ForeignKey(Event, on_delete=models.CASCADE)
-	#attending = models.ManyToManyField(Event)
-	#tag_history = models.ForeignKey(User_Tag_Record,on_delete=models.CASCADE)
-
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
@@ -32,3 +27,10 @@ post_save.connect(create_user_profile, sender=User)
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
+
+
+class Product(models.Model):
+	name = models.CharField(max_length=255)
+	productType = models.CharField(max_length=255)
+	url = models.TextField()
+	users = models.ManyToManyField(Profile)

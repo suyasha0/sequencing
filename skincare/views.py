@@ -55,3 +55,17 @@ def daily(request):
 def myproducts(request):
 	return render(request, 'myproducts.html')
 
+def myproducts(request):
+    if request.user.is_authenticated:
+        for p in request.user.product_set:
+            if p.type == 'moisturizer':
+                context = {'moisturizerName': p.name}
+                context = {'moisturizerURL': p.URL}
+            elif p.type == 'cleanser':
+                context = {'cleanserName': p.name}
+                context = {'cleanserURL': p.URL}
+            elif p.type == 'sunCare':
+                context = {'sunCareName': p.name}
+                context = {'sunCareURL': p.URL}
+    else:
+        return redirect('home')
