@@ -1,4 +1,5 @@
 # sequencing
 
 ## To Run
-> django-admin startproject skincare
+- make sure u have python and django
+> python manage.py runserver
