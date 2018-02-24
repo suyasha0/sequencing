@@ -36,7 +36,6 @@ def register(request):
     return render(request, 'register.html', {'form': form})
 
 def dashboard(request):
-
     if request.user.is_authenticated:
         context = {'first_name':request.user.first_name}
         return render(request,'dashboard.html',context)
