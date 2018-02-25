@@ -45,10 +45,11 @@ def dashboard(request):
 
 def weather(request):
 	#gets data from open weather, from moscow
-	result = requests.get('http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID=a5e7afca7c5950b7d739578c35e60ac9')
-	data = result.json()
-	print data['list'][0]['main']['humidity']
-	return render(request, 'weather.html')
+    result = requests.get('http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID=a5e7afca7c5950b7d739578c35e60ac9')
+    data = result.json()
+    context = {'first_name':request.user.first_name, 'humidity' : data['list'][0]['main']['humidity'], 'weather' : data['list'][0]['weather'][0]['description']}
+    #context = {'weather' : data['list'][0]['weather'][0]['description']}
+    return render(request, 'weather.html', context)
 
 def daily(request):
 	return render(request, 'daily.html')

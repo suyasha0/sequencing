@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
+<h1>Hello {{first_name}}!</h1>
+<h2>Today's humidity is {{ humidity }}%.</h2>
+<h2> We recommend you use: </h2>
+<h2> Moisturizer: <a href='https://www.amazon.com/Cetaphil-Moisturizing-Cream-Sensitive-Fragrance/dp/B00113HNB4?th=1'>Cetaphil Moisturizing Cream for Dry/Sensitive Skin </a> </h2>
+<h2> Cleanser: <a href='https://www.cerave.com/our-products/cleansers/foaming-facial-cleanser'>CeraVe Foaming Facial Cleanser </a> </h2>
+<h2> Nighttime Eye Mask: <a href='https://www.sephora.com/product/eye-mask-P394903'>Sephora Green Tea Eye Mask </a> </h2>
 
-  <h2>Hello {{first_name}}</h2>
+<h2>Today's weather is {{ weather }}.</h2>
+<h2> Make sure to pack an umbrella and grab your boots {{first_name}}! <h2>
 
 {% endblock %}
