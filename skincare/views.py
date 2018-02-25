@@ -38,7 +38,11 @@ def register(request):
 
 def dashboard(request):
     if request.user.is_authenticated:
-        context = {'first_name':request.user.first_name}
+        result = requests.get('http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID=a5e7afca7c5950b7d739578c35e60ac9')
+        data = result.json()
+        context = {'first_name':request.user.first_name, 'humidity' : data['list'][0]['main']['humidity'], 'weather' : data['list'][0]['weather'][0]['description']}
+        #context = {'weather' : data['list'][0]['weather'][0]['description']}
+        return render(request, 'weather.html', context)
         return render(request,'dashboard.html',context)
     else:
         return redirect('home')
@@ -53,9 +57,12 @@ def weather(request):
 
 def daily(request):
 	return render(request, 'daily.html')
+
+
 def myproducts(request):
 	return render(request, 'myproducts.html')
 
+'''
 def myproducts(request):
     if request.user.is_authenticated:
         for p in request.user.product_set:
@@ -70,3 +77,4 @@ def myproducts(request):
                 context = {'sunCareURL': p.URL}
     else:
         return redirect('home')
+'''
