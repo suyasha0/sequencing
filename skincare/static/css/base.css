@@ -1,3 +1,31 @@
+.navbar-brand{
+	font-size: 2em;
+}
+
 .whitetxt {
 	color: rgba(255, 255, 255, 0.6);
+}
+
+.home{
+	margin-top: 5%;
+}
+
+.box{
+	margin: auto;
+	width: 20%;
+	height: 20%;
+	display: relative;
+	border-radius: 10px;
+	background-color: #e5e5e5;
+	padding: 2%;
+}
+
+h2{
+	padding: 2%;
+}
+
+.btn-lg{
+	height: 40px;
+	border-radius: 20px;
+	font-size: 1.75rem;
 }
