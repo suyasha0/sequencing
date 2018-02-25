@@ -11,3 +11,5 @@
 ## Weather API (NY)
 
 http://api.openweathermap.org/data/2.5/forecast?id=5128638&APPID=a5e7afca7c5950b7d739578c35e60ac9
+
+Jic7mrKJjXRtmD_8UHmCr1lYOlHcmEvP1sn9MSA3s3XPEALmcwDduIMFmcUARUolUR20ANZqc3Eq0jTWHSOYdA
